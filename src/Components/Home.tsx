@@ -182,7 +182,7 @@ export default function Home() {
                 onClick={handleProfileMenuOpen}
                 color="inherit"
               >
-                <Avatar src="./" />
+                <Avatar src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRooEnD32-UtBw55GBfDTxxUZApMhWWnRaoLw&s" />
               </IconButton>
             </IconWrapper>
           </Toolbar>
