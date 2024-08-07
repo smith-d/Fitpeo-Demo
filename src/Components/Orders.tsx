@@ -6,31 +6,40 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Avatar from "@mui/material/Avatar";
-import { faker } from "@faker-js/faker";
 import { Card, CardContent, Typography, Box } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import TableCell from "@mui/material/TableCell";
 
+// Define a different set of profile picture URLs
+const profilePics = [
+  "https://randomuser.me/api/portraits/men/5.jpg",
+  "https://randomuser.me/api/portraits/women/5.jpg",
+  "https://randomuser.me/api/portraits/men/6.jpg",
+  "https://randomuser.me/api/portraits/women/6.jpg",
+  "https://randomuser.me/api/portraits/men/7.jpg",
+  "https://randomuser.me/api/portraits/women/7.jpg",
+];
+
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  textAlign: "left", // Aligns text to the left
+  textAlign: "left",
   color: theme.palette.common.white,
   padding: "16px 24px",
   overflow: "hidden",
 }));
+
 const StyledStatusCell = styled(TableCell)(({ theme }) => ({
-  textAlign: "center", // Aligns text to the left
+  textAlign: "center",
   color: theme.palette.common.white,
   padding: "16px 24px",
   overflow: "hidden",
 }));
 
 const StyledTableHeadCell = styled(TableCell)(({ theme }) => ({
-  textAlign: "left", // Aligns text to the left
+  textAlign: "left",
   color: theme.palette.common.white,
   fontWeight: "bold",
   fontSize: "1rem",
   padding: "16px 24px",
-  // Ensure text alignment is not overridden by other styles
   overflow: "hidden",
 }));
 
@@ -110,7 +119,7 @@ export default function Orders() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row) => (
+              {rows.map((row, index) => (
                 <TableRow
                   key={row.name}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -124,7 +133,7 @@ export default function Orders() {
                     >
                       <Avatar
                         alt={row.name}
-                        src={faker.image.avatar()}
+                        src={profilePics[index % profilePics.length]} // Use different profile pictures
                         sx={{ marginRight: "10px" }}
                       />
                       <Typography

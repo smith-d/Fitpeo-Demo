@@ -4,13 +4,23 @@ import Grid from "@mui/material/Grid";
 import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
-import { faker } from "@faker-js/faker";
 import { Card } from "@mui/material";
+
+const profilePics = [
+  "https://randomuser.me/api/portraits/men/1.jpg",
+  "https://randomuser.me/api/portraits/women/1.jpg",
+  "https://randomuser.me/api/portraits/men/2.jpg",
+  "https://randomuser.me/api/portraits/women/2.jpg",
+  "https://randomuser.me/api/portraits/men/3.jpg",
+  "https://randomuser.me/api/portraits/women/3.jpg",
+  "https://randomuser.me/api/portraits/men/4.jpg",
+];
 
 interface Review {
   name: string;
   rating: number;
   text: string;
+  profilePic: string; // Add profilePic field to Review interface
 }
 
 const reviews: Review[] = [
@@ -18,36 +28,43 @@ const reviews: Review[] = [
     name: "Jenny Wilson",
     rating: 5,
     text: "The food was excellent and so was the service. I had the mushroom risotto with scallops which was awesome. I had a burger over greens (gluten-free) which was also very good. They were very conscientious about gluten allergies.",
+    profilePic: profilePics[0], // Assign a random profile picture
   },
   {
     name: "Dianne Russell",
     rating: 5,
     text: "We enjoyed the Eggs Benedict served on homemade focaccia bread and hot coffee. Perfect service.",
+    profilePic: profilePics[1], // Assign a random profile picture
   },
   {
     name: "Devon Lane",
     rating: 4,
     text: "Normally wings are wings, but theirs are lean meaty and tender.",
+    profilePic: profilePics[2], // Assign a random profile picture
   },
   {
     name: "Mia Thompson",
     rating: 4,
     text: "A pleasant dining experience with friendly staff. The steak was cooked to perfection.",
+    profilePic: profilePics[3], // Assign a random profile picture
   },
   {
     name: "Oliver Smith",
     rating: 3,
     text: "The food was okay, but the service was a bit slow. Could use some improvement.",
+    profilePic: profilePics[4], // Assign a random profile picture
   },
   {
     name: "Emily Johnson",
     rating: 5,
     text: "Absolutely loved the dessert. The chocolate mousse was divine and the ambiance was perfect.",
+    profilePic: profilePics[5], // Assign a random profile picture
   },
   {
     name: "Liam Brown",
     rating: 5,
     text: "Best restaurant in town! Great food, great service, and a fantastic atmosphere.",
+    profilePic: profilePics[6], // Assign a random profile picture
   },
 ];
 
@@ -99,11 +116,11 @@ const Separator = styled("hr")({
   margin: "16px 0",
 });
 
-const ReviewCard: React.FC<Review> = ({ name, rating, text }) => (
+const ReviewCard: React.FC<Review> = ({ name, rating, text, profilePic }) => (
   <ReviewContainer>
     <Grid container spacing={2} alignItems="center">
       <Grid item>
-        <Avatar alt={name} src={faker.image.avatar()} />
+        <Avatar alt={name} src={profilePic} />
       </Grid>
       <Grid item xs>
         <Typography variant="h6">{name}</Typography>
