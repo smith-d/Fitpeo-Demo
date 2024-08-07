@@ -10,7 +10,8 @@ export default function CircularProgressChildren() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        gap: 2,
+        gap: 0,
+        height: "160px",
       }}
     >
       <Box sx={{ position: "relative", display: "inline-flex" }}>
@@ -21,7 +22,9 @@ export default function CircularProgressChildren() {
           sx={{
             width: "100px",
             height: "100px",
+            "--CircularProgress-track-color": "#7592FE",
             "--CircularProgress-size": "100px",
+            "--CircularProgress-bar-color": "#fff",
           }}
         >
           <Box
@@ -34,27 +37,21 @@ export default function CircularProgressChildren() {
               width: "100%",
             }}
           >
-            <Typography level="h3" sx={{ mb: 0, color: "#7393FF" }}>
+            <Typography level="h3" sx={{ mb: 0, color: "#fff" }}>
               70%
             </Typography>
-            <Typography
-              level="body2"
-              sx={{ mt: 0, fontSize: "0.70rem", color: "#7393FF" }}
-            >
+            <Typography sx={{ mt: 0, fontSize: "0.70rem", color: "#fff" }}>
               Goal
             </Typography>
-            <Typography
-              level="body2"
-              sx={{ mt: 0, fontSize: "0.70rem", color: "#7393FF" }}
-            >
+            <Typography sx={{ mt: 0, fontSize: "0.70rem", color: "#fff" }}>
               Completed
             </Typography>
           </Box>
         </CircularProgress>
       </Box>
 
-      <Typography sx={{ fontSize: "0.75rem", color: "text.secondary" }}>
-        * The values here have been rounded off
+      <Typography sx={{ fontSize: "12px", color: "#fff", marginTop: "10px" }}>
+        * The values here has been rounded off
       </Typography>
     </Box>
   );

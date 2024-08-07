@@ -14,6 +14,7 @@ import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import VerticalNavBar from "./VerticalNavBar";
 import DashBoard from "./DashBoard";
+import { Avatar } from "@mui/material";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -28,6 +29,10 @@ const Search = styled("div")(({ theme }) => ({
   [theme.breakpoints.up("sm")]: {
     marginLeft: theme.spacing(3),
     width: "auto",
+  },
+  [theme.breakpoints.down("md")]: {
+    width: "100%",
+    marginLeft: 0,
   },
 }));
 
@@ -45,7 +50,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`, // Corrected calc usage
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("md")]: {
@@ -72,10 +77,24 @@ const CircularIconWrapper = styled("div")(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
   margin: theme.spacing(0.5),
-  position: "relative", // Added position relative
+  position: "relative",
 }));
 
-export default function NavBar() {
+const IconWrapper = styled(Box)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  [theme.breakpoints.down("md")]: {
+    flexDirection: "column",
+    alignItems: "flex-end",
+  },
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column",
+    alignItems: "flex-end",
+    marginRight: theme.spacing(2),
+  },
+}));
+
+export default function Home() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const isMenuOpen = Boolean(anchorEl);
@@ -92,16 +111,10 @@ export default function NavBar() {
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
-      anchorOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
+      anchorOrigin={{ vertical: "top", horizontal: "right" }}
       id={menuId}
       keepMounted
-      transformOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
+      transformOrigin={{ vertical: "top", horizontal: "right" }}
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
@@ -111,7 +124,7 @@ export default function NavBar() {
   );
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", width: "100%" }}>
       <VerticalNavBar />
 
       <Box sx={{ flexGrow: 1 }}>
@@ -127,7 +140,7 @@ export default function NavBar() {
               />
             </Search>
             <Box sx={{ flexGrow: 1 }} />
-            <Box sx={{ display: "flex", alignItems: "center" }}>
+            <IconWrapper>
               <IconButton
                 size="large"
                 aria-label="show new mails"
@@ -169,9 +182,9 @@ export default function NavBar() {
                 onClick={handleProfileMenuOpen}
                 color="inherit"
               >
-                <AccountCircle />
+                <Avatar src="./" />
               </IconButton>
-            </Box>
+            </IconWrapper>
           </Toolbar>
         </AppBar>
         <DashBoard />

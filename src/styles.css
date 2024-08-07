@@ -1,17 +1,20 @@
-/* styles.css */
-html,
-body,
 .root {
-  height: 100%;
+  height: 550px;
+  width: 100%;
   background-color: black;
-  color:#FBFBFC;
-  margin: 0;
+  color: #fbfbfc;
+  margin-bottom: 15px;
+  overflow-y: auto;
+}
+
+html {
+  overflow-y: hidden;
 }
 
 .App {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  overflow: hidden;
 }
 
 .main-content {
@@ -22,6 +25,7 @@ body,
 
 .VerticalNavBar {
   width: 60px;
+  height: 100vh;
   background-color: #1f2029;
   display: flex;
   flex-direction: column;
@@ -39,41 +43,23 @@ body,
 }
 
 .value-text {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: bold;
   color: white;
+  /* margin-right: 50px; */
 }
 
-/* styles.css */
-html,
-body,
-#root {
-  height: 100%;
-  margin: 0;
-}
-
-.App {
+/* .App {
   display: flex;
   flex-direction: column;
   height: 100vh;
-}
-
-/* .main-content {
-  display: flex;
-  flex: 1;
-  margin-top: 64px; /* This should match the height of the AppBar */
 } */
 
-.VerticalNavBar {
-  width: 60px;
-  height:100%;
-  background-color: #1f2029;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 16px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-  flex-shrink: 0; /* Prevent shrinking */
+.DashBoard {
+  flex: 1;
+  padding: 16px;
+  background-color: #f4f4f4;
+  overflow-y: auto;
 }
 
 .DashBoard {

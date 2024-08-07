@@ -7,6 +7,16 @@ import InsertChartOutlinedOutlinedIcon from "@mui/icons-material/InsertChartOutl
 import AssignmentTurnedInOutlinedIcon from "@mui/icons-material/AssignmentTurnedInOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
+import { RiLogoutCircleRLine } from "react-icons/ri";
+
+// Define the props for IconWrapper and Icon
+interface IconWrapperProps {
+  isActive?: boolean;
+}
+
+interface IconProps {
+  isActive?: boolean;
+}
 
 const Sidebar = styled("div")(({ theme }) => ({
   width: 60,
@@ -16,9 +26,15 @@ const Sidebar = styled("div")(({ theme }) => ({
   flexDirection: "column",
   alignItems: "center",
   paddingTop: theme.spacing(2),
+  position: "relative",
+  [theme.breakpoints.down("sm")]: {
+    width: 50,
+  },
 }));
 
-const IconWrapper = styled("div")(({ theme, isActive }) => ({
+const IconWrapper = styled("div", {
+  shouldForwardProp: (prop) => prop !== "isActive",
+})<IconWrapperProps>(({ theme, isActive }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -41,14 +57,24 @@ const TopIconButton = styled(IconButton)(({ theme }) => ({
   marginBottom: theme.spacing(4),
 }));
 
-const Icon = styled("div")(({ theme, isActive }) => ({
+const Icon = styled("div", {
+  shouldForwardProp: (prop) => prop !== "isActive",
+})<IconProps>(({ theme, isActive }) => ({
   color: isActive ? theme.palette.primary.main : theme.palette.common.white,
+}));
+
+const LogoutIcon = styled(RiLogoutCircleRLine)(({ theme }) => ({
+  color: "white",
+  fontSize: "1.5rem",
+  position: "absolute",
+  bottom: theme.spacing(2),
+  margin: theme.spacing(1),
 }));
 
 export default function VerticalNavBar() {
   const [activeIcon, setActiveIcon] = React.useState("dashboard");
 
-  const handleClick = (iconName) => {
+  const handleClick = (iconName: string) => {
     setActiveIcon(iconName);
   };
 
@@ -114,6 +140,7 @@ export default function VerticalNavBar() {
           </Icon>
         </SidebarIconButton>
       </IconWrapper>
+      <LogoutIcon />
     </Sidebar>
   );
 }
